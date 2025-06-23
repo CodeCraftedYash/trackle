@@ -1,0 +1,28 @@
+:root{
+    --color-primary: #f9f9f9;
+    --color-primary-shade:#8ce199;
+    --color-secondary: #fce9ba;
+    --color-background: #dbe8e5;
+    --color-text: #333333;
+    --color-border: #4f4f4f;
+    
+    --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+    --font-family-serif: 'Georgia', serif;
+
+    --font-size-base: 16px;
+    --font-size-large: 20px;
+    --font-size-small: 14px;
+}
+
+.gradient-style-1{
+    background-image: linear-gradient(to left,
+    var(--color-primary) 0%,
+    var(--color-secondary) 80%
+    )
+}
+.gradient-style-2{
+    background-image: linear-gradient(to bottom,
+        var(--color-primary-shade),
+        var(--color-secondary)
+    )
+}
