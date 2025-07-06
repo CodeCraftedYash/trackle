@@ -1,8 +1,9 @@
 import { Router,createRootRoute, createRoute } from '@tanstack/react-router'
-import {RootLayout,LandingPage,Login,Admin,User} from './utils'
+import {RootLayout,LandingPage,Login,Admin,User,NotFound} from './utils'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
+  notFoundComponent: NotFound,
 })
 
 const indexRoute = createRoute({
@@ -28,6 +29,7 @@ const userRoute = createRoute({
     path: 'user/$user',
     component: User
 })
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   loginRoute,
