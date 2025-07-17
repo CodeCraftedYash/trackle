@@ -1,14 +1,16 @@
-import { Document } from "mongoose";
-export interface User extends Document {
-    name: string;
-    password: string;
-    role: "student" | "teacher";
-    mobileNumber: string;
+export interface TeacherType {
+  name: string;
+  gender: string;
+  password: string;
+  role: 'student' | 'teacher';
+  mobileNumber: string;
+  picture: Blob | string;
 }
 
-export interface Student extends User {
-    class: string;
+export interface StudentType extends TeacherType {
+    studyingClass: string;
     fees: number;
+    isFeesPaid: boolean;
     homework: string[];
 }
 
