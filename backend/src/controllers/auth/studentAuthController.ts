@@ -11,11 +11,11 @@ export async function registerStudentController( req:Request, res:Response ){
             role: student.role,
             mobileNumber: student.mobileNumber,
         });
-    } catch (error) {
+    } catch (error:any) {
         if(error instanceof Error) {
               res.status(400).json({ message: error.message });
         }
-        else res.status(400).json({ message: 'Something went wrong' });
+        else res.status(500).json({ message: 'Something went wrong' });
     }
 }
 
