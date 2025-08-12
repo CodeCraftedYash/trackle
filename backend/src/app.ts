@@ -10,16 +10,4 @@ app.use(express.json());
 
 app.use('/api', allRouter);
 
-/* const createAdmin = async () => {
-    const data ={
-        name:"Yash Mishra", gender:"male", password:"yashtesting", mobileNumber:"6299700545",picture:"rkfasdj"
-    }
-    try {
-        await registerTeacherService(data)
-        console.log("Admin created successfully");
-    } catch( error ) {
-        console.log(error);
-    }
-}
-createAdmin(); */
 export default app;
