@@ -3,8 +3,12 @@ import { StudentModel } from "../models/student.model.js";
 import { type StudentType } from "../models/types/types.js";
 import jwt from "jsonwebtoken";
 
-export async function registerStudentService(data:StudentType){
-    const { name, gender, password,mobileNumber,studyingClass,picture } = data;
+export async function registerStudentService({data,picture_Id}: {data: StudentType, picture_Id: string}) {
+    const { name, gender, password,mobileNumber,standard,picture } = data;
+    const existing = await StudentModel.findOne({ mobileNumber: mobileNumber });
+    if (existing) {
+        throw new Error("Mobile number already exist")
+    }
     const hashedPassword = await hashPassword(password);
     const newStudent = await StudentModel.create({
         name,
@@ -12,10 +16,11 @@ export async function registerStudentService(data:StudentType){
         mobileNumber,
         password: hashedPassword,
         role: "student",
-        studyingClass,
+        standard,
         picture,
+        picture_Id,
         fees:0,
-        ifFeesPaid: false,
+        isFeesPaid: false,
         homework: []
     });
     return newStudent
