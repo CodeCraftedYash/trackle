@@ -2,7 +2,7 @@ import { hashPassword,comparePassword } from "../utils/bcrypt.js";
 import { TeacherModel } from "../models/teacher.model.js";
 import { type TeacherType } from "../models/types/types.js";
 import jwt from 'jsonwebtoken';
-export async function registerTeacherService(data:Omit<TeacherType,'role' >){
+export async function registerTeacherService({data,picture_Id}: {data: TeacherType, picture_Id: string}) {
     const { name, gender, password, mobileNumber} = data;
     const hashedPassword = await hashPassword(password);
     const newTeacher = await TeacherModel.create({
@@ -11,7 +11,8 @@ export async function registerTeacherService(data:Omit<TeacherType,'role' >){
         mobileNumber,
         password: hashedPassword,
         role: "teacher",
-        picture:"hfakdsafk"
+        picture,
+        picture_Id,
     })
     return newTeacher;
 }
