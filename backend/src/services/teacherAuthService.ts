@@ -3,7 +3,7 @@ import { TeacherModel } from "../models/teacher.model.js";
 import { type TeacherType } from "../models/types/types.js";
 import jwt from 'jsonwebtoken';
 export async function registerTeacherService({data,picture_Id}: {data: TeacherType, picture_Id: string}) {
-    const { name, gender, password, mobileNumber} = data;
+    const { name, gender, password, mobileNumber,picture} = data;
     const hashedPassword = await hashPassword(password);
     const newTeacher = await TeacherModel.create({
         name,
