@@ -15,7 +15,7 @@ export async function registerTeacherController( req:Request, res:Response ){
                   }
                   }
                   catch (error : any) {
-                    return res.status(500).json({ message: "Image upload failed at register controller" });
+                    res.status(500).json({ message: "Image upload failed at register controller" });
                   }}
             const teacher = await registerTeacherService(teacherData);
             res.status(201).json(teacher);
