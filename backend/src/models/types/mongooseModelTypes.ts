@@ -7,12 +7,13 @@ export interface UserBase {
   role: 'student' | 'teacher';
   mobileNumber: string;
   picture:string;
+  picture_Id:string;
 }
 
 export interface TeacherModelType extends UserBase, Document {}
 
 export interface StudentModelType extends TeacherModelType {
-    studyingClass: string;
+    standard: string;
     fees: number;
     isFeesPaid: boolean;
     homework: string[];
