@@ -1,8 +1,9 @@
 import { Types } from "mongoose";
 
 export interface StudentPerformanceType {
-  student: Types.ObjectId;
+  student_Id: Types.ObjectId;
   year: number;
   month: number;
-  performance: number[];
+  dailyScore: number[];
+  monthlyPerformance?: number;
 }
