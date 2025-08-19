@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { loginStudentService, registerStudentService } from '../../services/studentAuthService.js';
 import { uploadOnCloudinary } from '../../services/cloudinary.service.js';
+import { studentCreatePerformanceService } from '../../services/studentCreatePerformanceService.js';
 
 export async function registerStudentController( req:Request, res:Response ){
     try {
@@ -18,6 +19,7 @@ export async function registerStudentController( req:Request, res:Response ){
                  res.status(500).json({ message: "Image upload failed at register controller" });
               }}
         const student = await registerStudentService(studentData);
+        await studentCreatePerformanceService(student.id);
         res.status(201).json(student);
     } catch (error:any) {
         if(error instanceof Error) {
