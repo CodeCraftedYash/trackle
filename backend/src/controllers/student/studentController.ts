@@ -5,6 +5,7 @@ import { deleteStudentById } from '../../services/studentDeleteService.js';
 import { uploadOnCloudinary } from '../../services/cloudinary.service.js';
 import { objectCleaner } from '../../utils/objectCleaner.js';
 import { StudentType } from '../../models/types/types.js';
+import { deleteAllStudentService } from '../../services/deleteAllStudentService.js';
 
 
 export const getStudents = async (req: Request, res: Response) => {
@@ -64,3 +65,22 @@ export const deleteStudent = async (
  res.status(200).json({ message: 'Student deleted successfully', student: result });
 };
 
+export const deleteAllStudentController = async (req: Request, res: Response) => {
+   try {
+    const { _Id, password } = req.body;
+
+    const deleteAll = await deleteAllStudentService(_Id, password);
+
+      res.status(200).json({
+      success: true,
+      message: deleteAll.message,
+    });
+    return;
+  } catch (error: any) {
+      res.status(400).json({
+      success: false,
+      message: error.message || "Failed to delete students",
+    });
+  }
+  return;
+}
