@@ -26,11 +26,8 @@ const performanceSchema = new Schema<StudentPerformanceType>({
         },
         required: true,
     },
-    monthlyPerformance: {
-        type: Number,
-    },
 })
 
-const StudentPerformance = mongoose.model('StudentPerformance', performanceSchema);
+const StudentPerformanceModel = mongoose.model('StudentPerformance', performanceSchema);
 
-export default StudentPerformance;
+export default StudentPerformanceModel;
