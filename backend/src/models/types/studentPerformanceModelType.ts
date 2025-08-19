@@ -5,5 +5,4 @@ export interface StudentPerformanceType {
   year: number;
   month: number;
   dailyScore: number[];
-  monthlyPerformance?: number;
 }
