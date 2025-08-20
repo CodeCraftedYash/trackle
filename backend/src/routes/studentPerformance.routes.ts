@@ -8,3 +8,5 @@ router.post('/updateStudentPerformance',updateStudentPerformanceController);
 router.get('/getStudentPerformance',getStudentPerformanceByIdController);
 
 router.get('/getAllStudentPerformance',getAllStudentPerformanceController);
+
+export default router;
