@@ -6,6 +6,7 @@ import { uploadOnCloudinary } from '../../services/cloudinary.service.js';
 import { objectCleaner } from '../../utils/objectCleaner.js';
 import { StudentType } from '../../models/types/types.js';
 import { deleteAllStudentService } from '../../services/deleteAllStudentService.js';
+import { assignHWService } from '../../services/assignHWService.js';
 
 
 export const getStudents = async (req: Request, res: Response) => {
@@ -74,6 +75,25 @@ export const deleteAllStudentController = async (req: Request, res: Response) =>
       res.status(200).json({
       success: true,
       message: deleteAll.message,
+    });
+    return;
+  } catch (error: any) {
+      res.status(400).json({
+      success: false,
+      message: error.message || "Failed to delete students",
+    });
+  }
+  return;
+}
+
+export const assignHWStudentController = async (req: Request, res: Response) => {
+   try {
+      const { student_Id, HW } = req.body;
+      const assignHW = await assignHWService(student_Id,HW);
+      res.status(200).json({
+      studentHW:assignHW,
+      success: true,
+      message: "Homework Assigned Successfully",
     });
     return;
   } catch (error: any) {
