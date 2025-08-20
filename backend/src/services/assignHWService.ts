@@ -21,5 +21,5 @@ export const assignHWService = async (student_Id:string,HW:string) => {
     
     await student.save();
     
-    return student;
+    return student.homework[today];
 }
