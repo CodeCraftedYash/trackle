@@ -2,6 +2,7 @@ import { Request,Response } from "express"
 import { studentGetAllPerformanceService } from "../../services/studentGetAllPerformanceService.js";
 import { studentGetByIdPerformanceService } from "../../services/studentGetByIdPerformanceService.js";
 import { studentUpdatePerformanceService } from "../../services/studentUpdatePerformanceService.js";
+import { ObjectId, Types } from "mongoose";
 
 export const getAllStudentPerformanceController = async (req: Request, res: Response) => {
   try {
@@ -25,13 +26,13 @@ export const getAllStudentPerformanceController = async (req: Request, res: Resp
 
 export const getStudentPerformanceByIdController = async (req: Request, res: Response) => {
   try {
-    const { student_Id } = req.body;
+    const  {student_Id}= req.params;
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
 
     const studentPerformance = await studentGetByIdPerformanceService({
-      student_Id,
+      student_Id: new Types.ObjectId(student_Id),
       year,
       month,
     });
@@ -51,7 +52,7 @@ export const updateStudentPerformanceController = async(req:Request,res:Response
       month,
     },score);
 
-    res.status(200).json(studentPerformance);
+    res.status(200).json({data:studentPerformance,message:"success"});
   } catch (error: any) {
     res.status(500).json({ message: error.message || "Failed to fetch student performance" });
   }
