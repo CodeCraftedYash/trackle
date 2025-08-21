@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/updateStudentPerformance',updateStudentPerformanceController);
 
-router.get('/getStudentPerformance',getStudentPerformanceByIdController);
+router.get('/getStudentPerformance/:student_Id',getStudentPerformanceByIdController);
 
 router.get('/getAllStudentPerformance',getAllStudentPerformanceController);
 
