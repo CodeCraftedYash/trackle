@@ -6,6 +6,7 @@ export interface TeacherType {
   role: 'student' | 'teacher';
   mobileNumber: string;
   picture: File | string;
+  picture_Id: string;
 }
 
 export interface StudentType extends TeacherType {
