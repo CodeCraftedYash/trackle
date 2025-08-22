@@ -7,6 +7,12 @@ export async function registerStudentController( req:Request, res:Response ){
     try {
         const { body, file} = req;
         const studentData = { ...body };
+
+        const mobileNumber: string = String(body.mobileNumber || "");
+        if (!/^\d{10}$/.test(mobileNumber)) {
+            res.status(400).json({ message: "Mobile Number must be exactly 10 digits" });
+            return;
+        }
         if (file) {
               try {
                  const cloudinaryResponse = await uploadOnCloudinary(file.path);
@@ -17,6 +23,7 @@ export async function registerStudentController( req:Request, res:Response ){
               }
               catch (error : any) {
                  res.status(500).json({ message: "Image upload failed at register controller" });
+                 return;
               }}
         const student = await registerStudentService(studentData);
         await studentCreatePerformanceService(student.id);
