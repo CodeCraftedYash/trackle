@@ -3,8 +3,8 @@ import { StudentModel } from "../models/student.model.js";
 import { type StudentType } from "../models/types/types.js";
 import jwt from "jsonwebtoken";
 
-export async function registerStudentService({data,picture_Id}: {data: StudentType, picture_Id: string}) {
-    const { name, gender, password,mobileNumber,standard,picture } = data;
+export async function registerStudentService(data : StudentType) {
+    const { name, gender, password,mobileNumber,standard,picture,picture_Id } = data;
     const existing = await StudentModel.findOne({ mobileNumber: mobileNumber });
     if (existing) {
         throw new Error("Mobile number already exist")
