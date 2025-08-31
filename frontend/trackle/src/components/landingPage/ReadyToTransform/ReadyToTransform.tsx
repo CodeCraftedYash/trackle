@@ -1,9 +1,11 @@
 import React from 'react'
 import Button from '../../button/Button'
+import { useNavigate } from '@tanstack/react-router'
 
 const ReadyToTransform:React.FC = () => {
-    const temporaryCB = () => {
-        alert('this will take you to login page')
+    const navigate = useNavigate();
+    const navigateCB = () => {
+        navigate({to:"/login"});
     }
   return (
     <div className='w-full  p-8 [&>button]:bg-blue-500 [&>button]:ml-[50%] [&>button]:-translate-x-[50%] [&>button]:mt-8'>
@@ -11,7 +13,7 @@ const ReadyToTransform:React.FC = () => {
             <h1 className='text-lg font-bold lg:text-2xl text-[var(--color-text)]'>Ready to Transform Your Teaching?</h1>
             <h2 className='text-sm lg:text-sm mt-1'>Join thousands of educators who are using Trackle to enhance thier teaching and empower their students</h2>
         </div>
-        <Button variant="primary" cb={ temporaryCB }>
+        <Button variant="primary" cb={ navigateCB }>
             <h1 className='text-sm lg:text-xl'>Get Started</h1>
         </Button>
     </div>
