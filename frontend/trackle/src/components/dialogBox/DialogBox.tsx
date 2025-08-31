@@ -10,7 +10,7 @@ const DialogBox: React.FC = () => {
     if (!isOpen) return;
     const timer = setTimeout(() => {
       closeDialog();
-    }, 3000);
+    }, 1200);
     return () => clearTimeout(timer);
   }, [isOpen, closeDialog]);
 
