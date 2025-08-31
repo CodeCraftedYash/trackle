@@ -1,11 +1,17 @@
+import { useNavigate } from '@tanstack/react-router';
 import React from 'react'
 
 const Logo:React.FC = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate({ to: '/' });
+  }
   return (
-    <div className='w-4 h-4 bg-red-500 p-4 box-border rounded-full'>
-        <div className='w-2 h-2 bg-yellow-300 p-2 box-border rounded-full'>
-            <h2>yash</h2>
-        </div>
+    <div className='box-border' onClick={handleClick}>
+      <h2 className='text-[var(--color-text)]'
+      style={{
+        fontSize: 'var(--font-size-large)'
+      }}>Trackle</h2>
     </div>
   )
 }
