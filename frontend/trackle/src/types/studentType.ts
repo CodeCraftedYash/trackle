@@ -1,13 +1,13 @@
 export interface StudentType {
-  id: string;
+  _id: string;
   name: string;
   gender: string;
   password: string;
   role: 'student' | 'teacher';
   mobileNumber: string;
-  picture: Blob | string;
-  studyingClass: string;
-  fees: number;
+  picture: string | null;
+  standard: string;
   isFeesPaid: boolean;
-  homework: string[];
+  fees:string;
+  homeWork:string[];
 }
