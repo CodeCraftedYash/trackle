@@ -22,8 +22,8 @@ const Table:React.FC = () => {
   ))
   return (
     <div className='w-full rounded-xl'>
-      <h1 className='font-bold w-fit mx-auto bg-[var(--color-accent)] text-[var(--color-text)] px-10 py-2 rounded-xl mb-8 border-[var(--color-surface)] border-2'
-      style={{fontSize:"var(--font-size-large)"}}
+      <h1 className='font-bold w-full text-center mx-auto bg-[var(--color-accent)] text-[var(--color-text)] px-10 py-2 rounded-xl mb-8 border-[var(--color-surface)] border-2'
+      style={{fontSize:"var(--font-size-semi-large)"}}
       >Student Data</h1>
       <div className='w-full overflow-x-scroll border-2 rounded-xl border-[var(--color-surface)]' style={{scrollbarWidth:'none',scrollBehavior:'smooth'}}>
       <table className=' w-full '>
