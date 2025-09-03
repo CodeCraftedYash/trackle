@@ -1,5 +1,4 @@
-import { easeInOut } from "motion";
-
+import { easeInOut } from "motion"
 export const progressBarVariant = {
     initial: {
         width: '0%',
@@ -7,14 +6,14 @@ export const progressBarVariant = {
     animate: {
         width: '100%',
         transition: {
-            duration: 2,
+            duration: 0.7,
             ease: easeInOut,
         }
     },
     exit: {
         width: '0%',
          transition: {
-            duration: 1,
+            duration: 0.3,
             ease: easeInOut,
         }
     },
