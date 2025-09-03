@@ -8,7 +8,7 @@ const ReadyToTransform:React.FC = () => {
         navigate({to:"/login"});
     }
   return (
-    <div className='w-full  p-8 [&>button]:bg-blue-500 [&>button]:ml-[50%] [&>button]:-translate-x-[50%] [&>button]:mt-8'>
+    <div className='w-full  p-8 [&>button]:bg-blue-500 [&>button]:ml-[50%] [&>button]:-translate-x-[50%] [&>button]:mt-8 border-t-2 pt-4 lg:pt-12 border-white/20'>
         <div>
             <h1 className='text-lg font-bold lg:text-2xl text-[var(--color-text)]'>Ready to Transform Your Teaching?</h1>
             <h2 className='text-sm lg:text-sm mt-1'>Join thousands of educators who are using Trackle to enhance thier teaching and empower their students</h2>
