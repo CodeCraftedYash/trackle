@@ -1,6 +1,8 @@
 import { Router,createRootRoute, createRoute } from '@tanstack/react-router'
 import {RootLayout,LandingPage,Login,Admin,User,NotFound} from './utils'
 import { protectedRouteLoader } from './protectedRoute'
+import { loginProtectedRoute } from './loginProtectedRoute'
+import About from '../pages/about/About'
 const rootRoute = createRootRoute({
   component: RootLayout,
   notFoundComponent: NotFound,
@@ -15,21 +17,28 @@ const indexRoute = createRoute({
 const loginRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: 'login',
-  component: Login
+  component: Login,
+  beforeLoad: loginProtectedRoute,
 })
 
 const adminRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: 'admin',
     component: Admin,
-    loader: protectedRouteLoader,
+    beforeLoad: protectedRouteLoader('teacher'),
 })
 
 const userRoute = createRoute({
     getParentRoute: () => rootRoute,
-    path: 'user/$user',
+    path: 'user/$user._id',
     component: User,
-    loader: protectedRouteLoader,
+    beforeLoad: protectedRouteLoader("student"),
+})
+
+const aboutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path:'about',
+  component:About,
 })
 
 const routeTree = rootRoute.addChildren([
@@ -37,6 +46,7 @@ const routeTree = rootRoute.addChildren([
   loginRoute,
   adminRoute,
   userRoute,
+  aboutRoute,
 ]);
 
 export const router = new Router({ routeTree });
