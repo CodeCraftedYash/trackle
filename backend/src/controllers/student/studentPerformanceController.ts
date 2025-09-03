@@ -29,7 +29,7 @@ export const getStudentPerformanceByIdController = async (req: Request, res: Res
     const  {student_Id}= req.params;
     const today = new Date();
     const year = today.getFullYear();
-    const month = today.getMonth() + 1;
+    const month = today.getMonth();
 
     const studentPerformance = await studentGetByIdPerformanceService({
       student_Id: new Types.ObjectId(student_Id),
