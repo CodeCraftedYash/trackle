@@ -8,7 +8,7 @@ export const studentGetByIdPerformanceService = async(data:Omit<StudentPerforman
     throw new Error("Missing required fields");
   }
   try{
-    const performanceResponse = await StudentPerformanceModel.find({
+    const performanceResponse = await StudentPerformanceModel.findOne({
         student_Id,year,month},
     );
     return performanceResponse
