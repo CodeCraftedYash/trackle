@@ -43,6 +43,7 @@ const Navbar: React.FC<Prop> = ({setOpen}) => {
                         <Link to={item.path} 
                         onClick={ () => setOpen?.(false) }
                         activeProps={{ className : 'text-green-500'}}
+                        style={{ fontSize: 'var(--font-size-base)'}}
                         >
                         {item.title}
                         </Link>
@@ -53,7 +54,7 @@ const Navbar: React.FC<Prop> = ({setOpen}) => {
             </li>}
             <li>
             <button onClick={handleClick} className=' h-full flex items-center justify-center gap-2 hover:scale-105 box-border border-2 px-2 pb-0.5 rounded-xl hover:bg-[var(--color-surface)] transition-all duration-150 hover:cursor-pointer'
-            style={{backgroundColor: role ? 'red' : 'green'}}>
+            style={{backgroundColor: role ? 'red' : 'green',fontSize: 'var(--font-size-base)'}}>
                 {role ? 'Logout' : 'Login'}
             </button>
             </li>

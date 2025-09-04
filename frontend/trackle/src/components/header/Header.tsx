@@ -4,18 +4,21 @@ import Navbar from './navbar/Navbar';
 import { AnimatePresence, motion } from 'motion/react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const elementRef = React.useRef<HTMLDivElement>(null);
+  useClickOutside(elementRef, () => setOpen(false));
   return (
-    <header className='w-full h-fit py-2 bg-[var(--color-surface)] flex flex-nowrap items-center font-semibold px-2 border-b-4 border-[var(--color-border)] justify-between'
+    <header ref={elementRef} className='w-full h-fit py-2 bg-[var(--color-surface)] flex flex-nowrap items-center font-semibold px-2 border-b-4 border-[var(--color-border)] justify-between'
       style={{
         fontSize: 'var(--font-size-base)',
       }}
     >
       <Logo />
       <div className='hidden lg:block'><Navbar /></div>
-      <div className='lg:hidden relative flex items-center justify-center mr-4 -translate-y-2'>
+      <div className='md:hidden relative flex items-center justify-center mr-4 -translate-y-2'>
         {<AnimatePresence>
           {!open && <motion.div
             key={`${open}`}
@@ -43,7 +46,7 @@ const Header: React.FC = () => {
         ease:"easeInOut",
 
       }}
-      className='bg-black/50  p-2 border-r-0 rounded-l-xl border-2 border-[var(--color-text)] '
+      className='bg-black/50  p-2 pr-6 border-r-0 rounded-l-xl border-2 border-[var(--color-text)] '
       >
             <Navbar setOpen={setOpen}/>
       </motion.div>
