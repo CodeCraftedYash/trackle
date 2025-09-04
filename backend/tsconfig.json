@@ -1,15 +1,14 @@
 {
-  "extends": "@tsconfig/node24/tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",          
-    "lib": ["ES2019", "DOM"],  
+    "target": "ES2019",
+    "lib": ["ES2019"],
     "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowJs": true,
-    "checkJs": true,
+    "strict": true,
     "outDir": "dist",
-    "strict": true
+    "allowJs": true,
+    "checkJs": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
