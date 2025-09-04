@@ -4,8 +4,6 @@ import allRouter from './routes/index.js';
 
 const app = express();
 const allowedOrigins = [process.env.FRONTEND_URL, process.env.PROD_FRONTEND_URL].filter(Boolean) as string[];
-console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
-console.log('PROD_FRONTEND_URL:', process.env.PROD_FRONTEND_URL);
 
 app.use(cors({
   origin: allowedOrigins ,
