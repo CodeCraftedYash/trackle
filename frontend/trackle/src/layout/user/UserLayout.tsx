@@ -40,9 +40,9 @@ const UserLayout: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className='w-[90%] overflow-y-hidden flex flex-row-reverse px-4 items-start justify-between gap-2 h-[11.5rem] '>
+          className='w-[90%] overflow-y-hidden flex flex-row-reverse px-4 items-start justify-between gap-2 h-[11.5rem] sm:h-[11rem] md:h-[13.5rem] lg:h-[13rem] '>
 
-          <div className=' px-4 md:px-0 flex flex-col items-center justify-between w-[70%] h-full'>
+          <div className=' px-4 md:px-0 flex flex-col items-center justify-between w-[70%] min-h-fit'>
             <HomeWork  todayHW={filteredHw[hwIndex].hw} title="Home Work" direction={direction} hwIndex={hwIndex} />
             <HomeWorkSlider setHwIndex={setHwIndex} hwIndex={hwIndex} setDirection={setDirection} direction={direction} />
           </div>
