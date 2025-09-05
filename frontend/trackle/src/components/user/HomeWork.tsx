@@ -20,10 +20,10 @@ const HomeWork: React.FC<HomeWorkProps> = (({ todayHW, title, direction, hwIndex
       >
         {title ? title : "Today's Home Work"}
       </h1>
-      <div className=' mt-4 border-2 p-2 rounded-lg overflow-hidden'>
+      <div className=' mt-4 p-2 px-4 rounded-lg overflow-hidden border-2 w-[100%]'>
         <AnimatePresence mode='wait' custom={direction}>
           <motion.p
-            className=' min-h-20 w-full'
+            className=' h-[5rem] text-wrap'
             style={{ fontSize: "var(--font-size-base)" }}
             key={hwIndex}
             variants={slideVariant}
@@ -32,7 +32,7 @@ const HomeWork: React.FC<HomeWorkProps> = (({ todayHW, title, direction, hwIndex
             exit="exit"
             custom={direction}
           >
-            {todayHW ? todayHW : "No homework assigned for today"}
+            {todayHW ? todayHW : "No homework assigned for today"} 
           </motion.p>
         </AnimatePresence>
       </div>

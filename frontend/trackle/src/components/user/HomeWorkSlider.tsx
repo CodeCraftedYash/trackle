@@ -37,7 +37,7 @@ const HomeWorkSlider: React.FC<Props> = ({ setHwIndex, hwIndex, direction, setDi
     };
 
     return (
-        <div className='mt-2 flex justify-between items-center w-full overflow-x-hidden'>
+        <div className='mt-2 flex justify-between items-center w-full overflow-x-hidden min-h-fit'>
             <LuCircleArrowLeft className='bg-[var(--color-accent)] text-[var(--color-text)] rounded-full text-xl md:text-4xl hover:cursor-pointer' onClick={handlePrev} />
             <AnimatePresence mode='wait' custom={direction}>
             <motion.span className='text-sm '
