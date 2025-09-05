@@ -74,7 +74,7 @@ const UpdateStudentModal: React.FC<Props> = ({ onClose,onSubmit }) => {
     >
       <div
         ref={elementRef}
-        className="bg-[var(--color-surface)] p-6 rounded-lg w-[90%] max-w-xl h-[80vh] shadow-lg border-2 flex flex-col items-center overflow-y-auto"
+        className="bg-[var(--color-surface)] p-6 rounded-lg w-[90%] max-w-xl min-h-[50vh] max-h-[70vh] shadow-lg border-2 flex flex-col items-center overflow-y-auto"
       >
         <h1 className="font-bold text-[var(--color-text)] border-b-2 mb-4 text-xl">Update Student</h1>
         <p className="text-base mb-1">{studentExists ? 'Enter the fields to update the student data' : 'Check if student exists'}</p>
