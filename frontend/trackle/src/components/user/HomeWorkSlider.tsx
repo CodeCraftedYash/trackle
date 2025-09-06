@@ -38,18 +38,19 @@ const HomeWorkSlider: React.FC<Props> = ({ setHwIndex, hwIndex, direction, setDi
 
     return (
         <div className='mt-2 flex justify-between items-center w-full overflow-x-hidden min-h-fit'>
-            <LuCircleArrowLeft className='bg-[var(--color-accent)] text-[var(--color-text)] rounded-full text-xl md:text-4xl hover:cursor-pointer' onClick={handlePrev} />
+            <LuCircleArrowLeft className='bg-[var(--color-accent)] text-[var(--color-text-heading)] rounded-full text-xl md:text-4xl hover:cursor-pointer scale-90' style={{boxShadow:"0px 0px 4px .05px black"}} onClick={handlePrev} />
             <AnimatePresence mode='wait' custom={direction}>
-            <motion.span className='text-sm '
+            <motion.span className='font-semibold'
             key={hwIndex}
             variants={slideVariant}
             initial="initial"
             animate="animate"
             exit="exit"
             custom={direction}
+            style={{ fontSize: "var(--font-size-base)" }}
             >{filteredHw[hwIndex].index + 1} <span>{filteredHw[hwIndex].month}</span></motion.span>
             </AnimatePresence>
-            <LuCircleArrowLeft className='bg-[var(--color-accent)] text-[var(--color-text)] rounded-full text-xl md:text-4xl rotate-180 hover:cursor-pointer' onClick={handleNext} />
+            <LuCircleArrowLeft className='bg-[var(--color-accent)] text-[var(--color-text-heading)] rounded-full text-xl md:text-4xl rotate-180 hover:cursor-pointer scale-90'  style={{boxShadow:"0px 0px 4px .05px black"}} onClick={handleNext} />
         </div>
     )
 }

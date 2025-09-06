@@ -6,11 +6,11 @@ const currentMonth = new Date().toLocaleString("default", { month: "long" });
 export const filterHw = () => {
   const homework = useAuthStore.getState().user?.homework;
   if (!homework) {
-    throw Error("No homework data available");
+    return[];
   }
   const todayHw = {
     index: todayDate,
-    hw: homework[todayDate + 1],
+    hw: homework[todayDate],
     month: currentMonth,
   };
   const previousMonth = new Date(

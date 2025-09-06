@@ -11,8 +11,8 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
   return (
     <div className="w-full h-full">
       <h2
-        className="bg-[var(--color-accent)] p-2 font-bold mb-4 text-center rounded-lg"
-        style={{ fontSize: "var(--font-size-base)" }}
+        className="bg-[var(--color-surface)] text-[var(--color-text-heading)] p-2 font-bold mb-4 text-center rounded-lg"
+        style={{ fontSize: "var(--font-size-semi-large)" }}
       >
         {month} Score
       </h2>
@@ -29,7 +29,7 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
             >
               <span>Day {index + 1}</span>
               <span
-                className="ml-4 px-2 rounded"
+                className="ml-4 px-2 p-0.5 rounded-sm"
                 style={{
                   backgroundColor: item > 0 ? "#78cc0a" : index + 1 >= todayIndex ? "#6E6E6E":"#fc685d",
                 }}

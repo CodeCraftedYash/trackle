@@ -15,15 +15,15 @@ const HomeWork: React.FC<HomeWorkProps> = (({ todayHW, title, direction, hwIndex
       className='flex flex-col items-center mx-auto text-[var(--color-text)] w-full'
     >
       <h1
-        style={{ fontSize: "var(--font-size-base)" }}
-        className='bg-[var(--color-accent)] font-bold text-nowrap p-2 w-full text-center whitespace-nowrap rounded-lg '
+        style={{ fontSize: "var(--font-size-semi-large)" }}
+        className='bg-[var(--color-surface)] font-bold text-nowrap p-2 w-full text-center whitespace-nowrap rounded-lg text-[var(--color-text-heading)]'
       >
         {title ? title : "Today's Home Work"}
       </h1>
       <div className=' mt-4 p-2 px-4 rounded-lg overflow-hidden border-2 w-[100%]'>
         <AnimatePresence mode='wait' custom={direction}>
           <motion.p
-            className=' h-[5rem] text-wrap'
+            className=' h-[5rem] text-wrap text-center'
             style={{ fontSize: "var(--font-size-base)" }}
             key={hwIndex}
             variants={slideVariant}

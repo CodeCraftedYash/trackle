@@ -29,18 +29,18 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ dailyScore, date })
   return (
   <div className="flex flex-col items-center gap-4 relative w-full h-full">
     <h2
-      className="bg-[var(--color-accent)] p-2  rounded-lg font-bold text-center w-[96%] ml-auto"
-      style={{ fontSize: "var(--font-size-base)" }}
+      className="bg-[var(--color-surface)] p-2  rounded-lg font-bold text-center w-full ml-auto text-[var(--color-text-heading)]"
+      style={{ fontSize: "var(--font-size-semi-large)" }}
     >
       Performance Chart
     </h2>
 
-    <div className="w-full flex-1 relative">
+    <div className="w-full flex-1 relative bg-[var(--color-surface)] rounded-lg">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={seriesData}>
-          <CartesianGrid stroke="#ccc" strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
-          <YAxis />
+          <CartesianGrid stroke="var(--color-text-heading)"  />
+          <XAxis dataKey="day" tick={{fill:'var(--color-text)', fontWeight:"200"}} axisLine={{stroke:"black",strokeWidth:1.5}} tickLine={{stroke:"black",strokeWidth:1}}/>
+          <YAxis tick={{fill:'var(--color-text)', fontWeight:"200"}} axisLine={{stroke:"black",strokeWidth:1.5}} tickLine={{stroke:"black",strokeWidth:1}}/>
           <Tooltip
             contentStyle={{
               backgroundColor: "black",
@@ -51,9 +51,9 @@ const PerformanceChart: React.FC<PerformanceChartProps> = ({ dailyScore, date })
           <Line
             type="monotone"
             dataKey="score"
-            stroke="lightgreen"
-            strokeWidth={2}
-            dot={false}
+            stroke="white"
+            strokeWidth={3}
+            dot={true}
           />
         </LineChart>
       </ResponsiveContainer>
