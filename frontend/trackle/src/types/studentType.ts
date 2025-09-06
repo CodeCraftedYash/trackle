@@ -9,5 +9,5 @@ export interface StudentType {
   standard: string;
   isFeesPaid: boolean;
   fees:string;
-  homeWork:string[];
+  homework:string[];
 }
