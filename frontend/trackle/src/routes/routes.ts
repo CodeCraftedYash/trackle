@@ -3,6 +3,8 @@ import {RootLayout,LandingPage,Login,Admin,User,NotFound} from './utils'
 import { protectedRouteLoader } from './protectedRoute'
 import { loginProtectedRoute } from './loginProtectedRoute'
 import About from '../pages/about/About'
+import SignIn from '../pages/auth/login/signIn/SignIn'
+import { signInProtectedRoute } from './signInProtectedRoute'
 const rootRoute = createRootRoute({
   component: RootLayout,
   notFoundComponent: NotFound,
@@ -19,6 +21,13 @@ const loginRoute = createRoute({
   path: 'login',
   component: Login,
   beforeLoad: loginProtectedRoute,
+})
+
+const SignInRoute = createRoute({
+  getParentRoute :() => rootRoute,
+  path:'signin',
+  component:SignIn,
+  beforeLoad: signInProtectedRoute
 })
 
 const adminRoute = createRoute({
@@ -47,6 +56,7 @@ const routeTree = rootRoute.addChildren([
   adminRoute,
   userRoute,
   aboutRoute,
+  SignInRoute
 ]);
 
 export const router = new Router({ routeTree });
