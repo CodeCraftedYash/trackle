@@ -17,7 +17,7 @@ const AdminLayout: React.FC = () => {
   }, [])
 
   return (
-    <div className='bg-[var(--color-background)] w-full min-h-screen text-[var(--color-text)] p-2' style={{
+    <div className='bg-[var(--color-background)] w-full min-h-screen text-[var(--color-text-heading)] p-2' style={{
       overflow: showModal == 0 ? 'auto' : 'hidden'
     }} >
       {showModal != 0 && <div className='fixed top-0 w-full h-full z-10' style={{ backgroundColor: "rgba(0, 0, 0, 0.01)", backdropFilter: "blur(6px)" }}></div>}
@@ -34,8 +34,8 @@ const AdminLayout: React.FC = () => {
             ease: "easeInOut"
           }
         }}
-        className='w-[90%] md:w-w-[75%] lg:w-[60%] mx-auto bg-[var(--color-accent)] flex justify-center border-b-2 border-[var(--color-border)] pb-2 mt-2 rounded-xl'>
-        <h1 className='font-bold text-center w-full mt-2' style={{fontSize:"var(--font-size-semi-large)"}}>Admin</h1>
+        className='w-[60%] py-2 mx-auto bg-[var(--color-surface)] flex justify-center pb-2 mt-2 rounded-xl'>
+        <h1 className='font-bold text-center' style={{ fontSize: "var(--font-size-large)" }}>Admin</h1>
       </motion.div>
 
       <motion.div className='w-[90%] lg:w-[60%] min-h-[4rem] border-2 border-[var(--color-border)] mx-auto flex flex-wrap items-center justify-center gap-4 p-4 box-border mt-[2rem] rounded-xl'
@@ -49,11 +49,11 @@ const AdminLayout: React.FC = () => {
           transition: {
             duration: 0.8,
             ease: "easeInOut",
-            delay:0.2
+            delay: 0.2
           }
         }}
       >
-        <Button cb={() => setShowModal(1)} variant='primary'>Add Student<IoMdPersonAdd className='text-lg' /></Button>
+        <Button cb={() => setShowModal(1)} variant='primary' customStyle='border-0'>Add Student<IoMdPersonAdd className='text-lg' /></Button>
         <Button cb={() => setShowModal(2)} variant='primary'>Edit Details<RxUpdate className='text-lg' /></Button>
         <Button cb={() => setShowModal(3)} variant='primary'>Remove Student<TiUserDelete className='text-lg' /></Button>
         <Button cb={() => setShowModal(4)} variant='primary'>Remove All <RiDeleteBin6Fill className='text-lg' /></Button>
@@ -72,7 +72,7 @@ const AdminLayout: React.FC = () => {
           transition: {
             duration: 0.8,
             ease: "easeInOut",
-            delay:0.4
+            delay: 0.4
           }
         }}
         className='w-[90%] lg:w-[60%] mx-auto mt-[2rem]'>
