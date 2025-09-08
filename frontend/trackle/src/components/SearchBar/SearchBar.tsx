@@ -7,8 +7,9 @@ import { useDialogStore } from '../../store/dialogStore';
 type Props = {
     setStudent_Id: React.Dispatch<React.SetStateAction<string>>;
     setStudentExists: React.Dispatch<React.SetStateAction<boolean>>;
+    setStudentName?: React.Dispatch<React.SetStateAction<string>>;
 }
-const SearchBar:React.FC<Props> = ({setStudent_Id,setStudentExists}) => {
+const SearchBar:React.FC<Props> = ({setStudent_Id,setStudentExists,setStudentName}) => {
     const [ query,setQuery ] = useState('');
     const checkStudent = useStudentStore().checkStudent;
     const openDialog = useDialogStore().openDialog;
@@ -22,13 +23,14 @@ const SearchBar:React.FC<Props> = ({setStudent_Id,setStudentExists}) => {
             openDialog("Student does not exists","Error");
         return;
         }
+        if(setStudentName) setStudentName(query);
         setQuery('')
         setStudent_Id(id);
         setStudentExists(true);
     }
   return (
     <div className='flex flex-col items-center gap-4 mt-5'>
-        <label className=' flex gap-1 flex-nowrap items-center font-bold' style={{fontSize:"var(--font-size-base)"}}> Search
+        <label className=' flex gap-1 flex-nowrap items-center font-bold' style={{fontSize:"var(--font-size-base)"}}>
             <input value={query} type="text" placeholder='Enter Student Name' className='bg-white outline-0 border-2 border-black text-black p-2 rounded-xl' style={{fontSize:"var(--font-size-base)"}} onChange={(e) => setQuery(e.target.value)}/>
         </label>
         <button className='border-2 bg-[var(--color-accent)] p-1 px-2 rounded-xl' onClick={handleSetStudentId}>Select</button>

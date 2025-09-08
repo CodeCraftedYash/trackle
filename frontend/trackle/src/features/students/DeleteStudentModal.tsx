@@ -1,35 +1,30 @@
 import React, { useState } from 'react'
 import { motion } from 'motion/react';
 import { fadeIn } from '../../variants/fadeInVariant';
-import { handleCheckStudentExists } from '../../handler/studentHandler';
 import { useDialogStore } from '../../store/dialogStore';
 import { useClickOutside } from '../../hooks/useClickOutside';
+import SearchBar from '../../components/SearchBar/SearchBar';
+
 type Props = {
   onClose: () => void;
   onSubmit: (id: string) => Promise<void>;
 }
 const DeleteStudentModal: React.FC<Props> = ({ onClose, onSubmit }) => {
-
+  const [ studentExists, setStudentExists ] = useState(false);
   const elementRef = React.useRef<HTMLDivElement>(null);
-  const [name, setName] = useState('');
-  const [deleteStudent, setDeleteStudent] = useState('');
-
+  const [deleteStudentId, setDeleteStudentId] = useState('');
+  const [studentName, setStudentName] = useState('');
   const openDialog = useDialogStore(state => state.openDialog)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(deleteStudent);
-    onClose();
-  }
-
-  const handleCheck = async () => {
-    const exists = await handleCheckStudentExists(name);
-    if (exists === null) {
-      openDialog("Student Does not exist", "Error");
+    if (!deleteStudentId) {
+      openDialog("No Student Selected", "Error");
       return;
     }
-    setDeleteStudent(exists);
-  };
+    onSubmit(deleteStudentId);
+    onClose();
+  }
 
   useClickOutside(elementRef, onClose);
 
@@ -43,42 +38,22 @@ const DeleteStudentModal: React.FC<Props> = ({ onClose, onSubmit }) => {
     >
       <div
         ref={elementRef}
-        className="bg-[var(--color-surface)] p-6 rounded-lg w-[90%] max-w-xl min-h-[40vh] shadow-lg border-2 flex flex-col items-center overflow-y-auto"
+        className="bg-[var(--color-surface)] absolute top-[20%] p-6 rounded-lg w-[90%] max-w-xl min-h-[40vh] shadow-lg border-2 flex flex-col items-center"
       >
         <h1 className="font-bold text-[var(--color-text-heading)] border-b-2 mb-4" style={{ fontSize: "var(--font-size-semi-large)" }}>Delete Student</h1>
         <div className="text-base mb-1">
-          {!!deleteStudent ? (
+          {studentExists ? (
             <>
-              <h1 style={{ fontSize: "var(--font-size-base)" }}>Delete <span className='text-red-500 scale-110 font-black'>{name}</span> ?</h1>
+              <h1 style={{ fontSize: "var(--font-size-base)" }}>Delete <span className='text-red-500 scale-110 font-black'>{studentName}</span> ?</h1>
             </>
-          ) : "check if student exists"
+          ) : <h1>Is the Student Exists ?</h1>
           }</div>
         <p className="text-base mb-4">Hit confirm to delete</p>
+        {!studentExists&&<SearchBar setStudentName={setStudentName} setStudent_Id={setDeleteStudentId} setStudentExists={setStudentExists} />}
+        {studentExists &&<form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full items-center">
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full items-center">
-          <label className="w-full max-w-sm">
-            <span className="block mb-1 text-sm">Name</span>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              readOnly={!!deleteStudent}
-              required
-              placeholder="Enter Name"
-              className={`w-full p-2 rounded-lg border ${deleteStudent ? 'bg-white/70' : 'bg-white'} text-black outline-none`}
-            />
-          </label>
           <div className="flex gap-4 mt-4">
-            {!deleteStudent ? (
-              <button
-                type="button"
-                onClick={handleCheck}
-                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-blue-700 transition-all"
-              >
-                Check
-              </button>
-            ) : (
+            {studentExists && (
               <>
                 <button
                   type="button"
@@ -96,9 +71,10 @@ const DeleteStudentModal: React.FC<Props> = ({ onClose, onSubmit }) => {
               </>
             )}
           </div>
-        </form>
+        </form>}
 
       </div>
+      
     </motion.div>
   )
 };

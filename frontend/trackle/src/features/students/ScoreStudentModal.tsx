@@ -43,7 +43,7 @@ const ScoreStudentModal:React.FC<Props> = ({onClose,onSubmit}) => {
     >
         <div ref={elementRef} className='bg-[var(--color-surface)] text-white w-[80%] sm:w-[75%] md:w-[70%] lg:w-[50%] h-fit py-8 border-2 rounded-xl flex flex-col items-center mb-[20%] relative'>
             <h1 className=' font-bold  my-2 text-center text-white border-b-2 lg:w-[40%] mx-auto'
-            style={{fontSize:"var(--font-size-large)"}}
+            style={{fontSize:"var(--font-size-semi-large)"}}
             >{studentExists ? "Score the Student" : "Search For The Student"}</h1>
 
             {!studentExists &&
