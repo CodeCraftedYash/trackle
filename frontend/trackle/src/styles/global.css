@@ -1,42 +1,41 @@
-:root{
-    --color-background:#181C14;
-    --color-surface:#1b7248;
-    --color-accent: #3b9199;
-    --color-text: #fffdf9;
-    --color-border: #82a079;
-    
-    --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
-    --font-family-serif: 'Georgia', serif;
+:root {
+  --color-background: #f8fafc;
+  --color-surface: #8ed4ce;
+  --color-accent: #ff8a3d;
+  --color-text: #0a0a0a;
+  --color-text-heading: #ffffff;
+  --color-border: #4c5f46;
+  --color-shadow: #000000;
+  --font-family-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-family-serif: "Georgia", serif;
 
-    --font-size-base: 12px;
-    --font-size-large: 20px;
-    --font-size-semi-large: 14px;
-    --font-size-small: 8px;
-    --chart-size: 200;
+  --font-size-base: 16px;
+  --font-size-large: 28px;
+  --font-size-semi-large: 22px;
+  --font-size-small: 10px;
 }
 
-.gradient-style-1{
-    background-image: linear-gradient(to left,
+.gradient-style-1 {
+  background-image: linear-gradient(
+    to left,
     var(--color-surface) 0%,
     var(--color-accent) 80%
-    )
+  );
 }
 
 @layer utilities {
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
-    :root {
-        --font-size-base: 16px;
-        --font-size-large: 24px;
-        --font-size-semi-large: 20px;
-        --font-size-small: 12px;
-        --chart-size: 300;
-    }
-    
+  :root {
+    --font-size-base: 16px;
+    --font-size-large: 32px;
+    --font-size-semi-large: 26px;
+    --font-size-small: 14px;
+  }
 }
