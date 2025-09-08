@@ -14,8 +14,8 @@ const Header: React.FC = () => {
     <header ref={elementRef} className='w-full h-fit py-2 bg-[var(--color-surface)] flex flex-nowrap items-center font-semibold px-2 justify-between'
       style={{
         fontSize: 'var(--font-size-base)',
-        position:'relative',
-         boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+        position: 'relative',
+        boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
       }}
     >
       <Logo />
