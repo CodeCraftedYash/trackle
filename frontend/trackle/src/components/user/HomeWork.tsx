@@ -15,7 +15,7 @@ const HomeWork: React.FC<HomeWorkProps> = (({ todayHW, title, direction, hwIndex
       className='flex flex-col items-center mx-auto text-[var(--color-text)] w-full'
     >
       <h1
-        style={{ fontSize: "var(--font-size-semi-large)" }}
+        style={{ fontSize: "var(--font-size-base)" }}
         className='bg-[var(--color-surface)] font-bold text-nowrap p-2 w-full text-center whitespace-nowrap rounded-lg text-[var(--color-text-heading)]'
       >
         {title ? title : "Today's Home Work"}
@@ -32,7 +32,7 @@ const HomeWork: React.FC<HomeWorkProps> = (({ todayHW, title, direction, hwIndex
             exit="exit"
             custom={direction}
           >
-            {todayHW ? todayHW : "No homework assigned for today"} 
+            {todayHW ? todayHW : "No homework assigned for today"}
           </motion.p>
         </AnimatePresence>
       </div>
