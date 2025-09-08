@@ -10,7 +10,6 @@ import { usePerformanceStore } from '../../../store/performanceStore';
 import type { studentPerformance } from '../../../types/studentPerformanceType';
 
 const Login = () => {
-  const [errorMessage, setErrorMessage] = useState<string>('');
   const navigate = useNavigate();
   const openDialog = useDialogStore(state => state.openDialog);
   const login = useAuthStore(state => state.login);
@@ -23,9 +22,10 @@ const Login = () => {
     const name = formData.get("name") as string;
     const password = formData.get("password") as string;
     const role = formData.get("role") as string;
-
+    const processedName = name.trim().split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
+    const processedPassword = password.trim().toLocaleLowerCase();
     try {
-      const res = await handleLogin(name, password, role);
+      const res = await handleLogin(processedName, processedPassword, role);
       const user = res.student ? res.student : res.teacher;
       if (!user || !user.role) {
         openDialog('Invalid user data', 'Login Failed');
@@ -49,8 +49,7 @@ const Login = () => {
       navigate({ to: destination });
     } catch (err: any) {
       const msg = err?.response?.data?.message || err.message || 'Login failed';
-      setErrorMessage(msg);
-      openDialog(errorMessage, "Request Failed");
+      openDialog(msg, "Request Failed");
     }
   };
   return (
