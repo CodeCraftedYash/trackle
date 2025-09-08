@@ -68,8 +68,8 @@ const Login = () => {
             ease: "easeInOut"
           }
         }}
-        className="w-[100%] lg:w-[40%] min-h-[15rem] border-2 mx-auto rounded-xl flex flex-col flex-nowrap">
-        <h1 className="text-center text-2xl font-bold border-b-2 mt-2 pb-2">Login</h1>
+        className="w-[100%] lg:w-[40%] min-h-[15rem] mx-auto rounded-xl flex flex-col flex-nowrap">
+        <h1 className="text-center font-bold mt-2 pb-3 rounded-xl bg-[var(--color-surface)] py-2 px-2 text-[var(--color-text-heading)] " style={{ fontSize: "var(--font-size-semi-large)" }}>Login</h1>
         <div>
           <form onSubmit={handleSubmit} className="flex flex-col flex-nowrap items-center p-4 gap-4 text-[0.7rem] lg:text-[1rem]">
             <div className="flex flex-nowrap items-center justify-between w-full gap-4">
