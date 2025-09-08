@@ -1,5 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useDialogStore } from '../../../store/dialogStore';
 import { useAuthStore } from '../../../store/authStore';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
@@ -8,6 +8,7 @@ import { motion } from 'motion/react';
 import { getStudentPerformance } from '../../../api/studentServices';
 import { usePerformanceStore } from '../../../store/performanceStore';
 import type { studentPerformance } from '../../../types/studentPerformanceType';
+import { tapAnimationVariant } from '../../../variants/tapAnimationVariant';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -67,7 +68,7 @@ const Login = () => {
             ease: "easeInOut"
           }
         }}
-        className="w-[100%] lg:w-[40%] min-h-[15rem] mx-auto rounded-xl flex flex-col flex-nowrap">
+        className="w-[100%] lg:w-[40%] min-h-[15rem] mx-auto rounded-xl flex flex-col flex-nowrap ">
         <h1 className="text-center font-bold mt-2 pb-3 rounded-xl bg-[var(--color-surface)] py-2 px-2 text-[var(--color-text-heading)] " style={{ fontSize: "var(--font-size-semi-large)" }}>Login</h1>
         <div>
           <form onSubmit={handleSubmit} className="flex flex-col flex-nowrap items-center p-4 gap-4 text-[0.7rem] lg:text-[1rem]">
@@ -113,7 +114,30 @@ const Login = () => {
               </label>
             </div>
             <div className="flex flex-nowrap items-center justify-between w-full gap-4">
-              <button className="p-1.5 rounded-xl border-2 hover:cursor-pointer hover:scale-105 transition-all duration-150 mx-auto mt-4" style={{ boxShadow: "0px 0px 6px 1px black" }}>Submit</button>
+               <motion.button
+                whileTap="tap"
+                initial="rest"
+                className="w-fit p-2 bg-green-500 rounded-xl mt-8 mb-2  hover:cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out text-[var(--color-text-heading)]"
+                onClick={(e: FormEvent) => {
+                  e.preventDefault();
+                  navigate({ to: "/" });
+                }}
+                variants={tapAnimationVariant}
+              >
+                Submit
+              </motion.button>
+              <motion.button
+                whileTap="tap"
+                initial="rest"
+                className="w-fit p-2 bg-[var(--color-accent)] rounded-xl mt-8 mb-2  hover:cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out text-[var(--color-text-heading)] "
+                onClick={(e: FormEvent) => {
+                  e.preventDefault();
+                  navigate({ to: "/signin" });
+                }}
+                variants={tapAnimationVariant}
+              >
+                SignUp ?
+              </motion.button>
             </div>
 
           </form>
