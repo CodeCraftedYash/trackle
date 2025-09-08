@@ -14,5 +14,5 @@ export const useDialogStore = create<DialogStateType>((set) => ({
   title: 'Notification!',
   openDialog: (msg, title = 'Notification!') =>
     set({ isOpen: true, message: msg, title }),
-  closeDialog: () => set({ isOpen: false }),
+  closeDialog: () => set({ isOpen: false,message:'',title:'Notification!' }),
 }));
