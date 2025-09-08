@@ -38,7 +38,7 @@ const SearchBar:React.FC<Props> = ({setStudent_Id,setStudentExists}) => {
              initial={{ opacity:0 }}
              animate={{ opacity:1,transition:{when:"beforeChildren",delayChildren:stagger(0.08)}}}
             className=''>
-                {query.length > 0 ? filteredStudentList.map((item,index)=>(
+                {filteredStudentList.map((item,index)=>(
                     <motion.li 
                         key={index}
                         className='text-white pb-1 border-b-2 px-4 hover:bg-green-400 cursor-pointer'
@@ -48,7 +48,7 @@ const SearchBar:React.FC<Props> = ({setStudent_Id,setStudentExists}) => {
                         >
                             {item}
                         </motion.li>
-                )):<li></li>}
+                ))}
             </motion.ul>
         </div>}
     </div>
