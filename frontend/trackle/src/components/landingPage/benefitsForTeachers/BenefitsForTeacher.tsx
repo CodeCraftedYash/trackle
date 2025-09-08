@@ -1,31 +1,35 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { benefitContent } from './benefitContent';
 
 const BenefitsForTeacher: React.FC = () => {
   return (
-    <div className='w-full border-t-2 pt-4 border-white/20 lg:pt-12'>
-      <h1 className='text-lg font-bold text-center' style={{fontSize:"var(--font-size-large)"}}>Benefits for Teachers</h1>
-      <h3 className='mb-2 text-center ' style={{fontSize:"var(--font-size-base)"}}>Trackle is designed to make your life easier and more efficient</h3>
-      <div className='flex flex-col lg:flex-row w-[70%] sm:w-[90%] sm:gap-12 md:w-full sm:flex-row md:flex-row lg:w-full md:gap-2 lg:gap-20 mx-auto'>
-        {benefitContent.map((item, index) => (
-          <div className='my-8 flex flex-col items-center justify-start relative w-full md:w-1/3' key={index}>
-            <div className="relative w-[100%] sm:w-[80%] md:w-[80%]  lg:w-[100%] aspect-square">
-              <img
-                src={item.src}
-                alt={item.alt}
-                className="absolute inset-0 w-full h-full rounded-xl object-cover"
-                loading="lazy"
-              />
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className=' w-full min-h-40  text-center pt-4 '>
+            <div className=' bg-[var(--color-surface)] py-4 rounded-xl mb-8 w-[80%] mx-auto'>
+            <h1 className='text-lg font-bold text-[var(--color-text-heading)] mb-1 px-2 ' style={{fontSize:"var(--font-size-large)"}}>Benefits For Teacher</h1>
             </div>
-            <div className='w-full md:w-[70%] lg:w-full mx-auto'>
-              <h2 className='mt-2 mb-1 whitespace-nowrap underline underline-offset-4' style={{ fontSize: "var(--font-size-semi-large)" }}>{item.heading}</h2>
-              <p className='' style={{ fontSize: "var(--font-size-base)" }}>{item.body}</p>
-            </div>
-          </div>
+            <h2 className='text-[var(--color-text)] mx-auto w-[80%] mb-8' style={{fontSize:"var(--font-size-small)"}}>Trackle is designed to make your life easier and more efficient.</h2>
+            <div className='w-full flex  justify-between gap-2 mt-4 flex-col md:mt-10'>
+                {
+                    benefitContent.map((item, index) => (
+                        <div className='flex w-full mb-12 lg:justify-between lg:items-start'>
+                        <div key={index} className='flex flex-col  lg:mt-8 w-full sm:mx-auto'>
+                            <h1 className='text-[var(--color-text-heading)] bg-[var(--color-surface)] rounded-xl font-thin w-[60%] px-2 py-4 mx-auto text-wrap' style={{fontSize:"var(--font-size-semi-large)"}}>{item.heading}</h1>
 
-        ))}
-      </div>
-    </div>
+                            <img src={item.src} alt={item.alt} loading="lazy" className='lg:hidden w-[55%] max-w-[56%] sm:w-[43%]  md:w-[25%] mx-auto my-4 lg:my-0' />
+
+                            <p className='font-light lg:mt-12 sm:w-[80%] sm:mx-auto md:w-[70%] lg:w-[100%]' style={{fontSize:"var(--font-size-base)"}}>{item.body}</p>
+                        </div>
+                        <img src={item.src} alt={item.alt} className='w-[25%] hidden lg:block' />
+                        </div>
+                    ))
+                }
+            </div>
+        </motion.div>
   )
 }
 

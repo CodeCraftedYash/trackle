@@ -1,7 +1,7 @@
 import type { benefitContentType } from "../../../types/benefitContentType";
-import img1 from '../../../assets/image1.webp';
-import img2 from '../../../assets/image2.webp';
-import img3 from '../../../assets/image3.webp';
+import img1 from '../../../assets/time.webp';
+import img2 from '../../../assets/leaves.webp';
+import img3 from '../../../assets/exam-results.webp';
 
 export const benefitContent:benefitContentType[] = [
     {
