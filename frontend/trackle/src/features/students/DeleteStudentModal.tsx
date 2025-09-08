@@ -1,37 +1,37 @@
-import React, {useState } from 'react'
-import {motion} from 'motion/react';
+import React, { useState } from 'react'
+import { motion } from 'motion/react';
 import { fadeIn } from '../../variants/fadeInVariant';
 import { handleCheckStudentExists } from '../../handler/studentHandler';
 import { useDialogStore } from '../../store/dialogStore';
 import { useClickOutside } from '../../hooks/useClickOutside';
 type Props = {
-    onClose: () => void;
-    onSubmit: (id: string) => Promise<void>;
+  onClose: () => void;
+  onSubmit: (id: string) => Promise<void>;
 }
-const DeleteStudentModal:React.FC<Props> = ({onClose,onSubmit}) => {
+const DeleteStudentModal: React.FC<Props> = ({ onClose, onSubmit }) => {
 
-    const elementRef = React.useRef<HTMLDivElement>(null);
-    const [name, setName] = useState('');
-    const [deleteStudent, setDeleteStudent ] = useState('');
+  const elementRef = React.useRef<HTMLDivElement>(null);
+  const [name, setName] = useState('');
+  const [deleteStudent, setDeleteStudent] = useState('');
 
-    const openDialog = useDialogStore(state => state.openDialog)
+  const openDialog = useDialogStore(state => state.openDialog)
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        onSubmit(deleteStudent);
-        onClose();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(deleteStudent);
+    onClose();
+  }
+
+  const handleCheck = async () => {
+    const exists = await handleCheckStudentExists(name);
+    if (exists === null) {
+      openDialog("Student Does not exist", "Error");
+      return;
     }
+    setDeleteStudent(exists);
+  };
 
-     const handleCheck = async () => {
-      const exists = await handleCheckStudentExists(name);
-      if(exists === null) {
-        openDialog("Student Does not exist", "Error");
-        return;
-        }
-      setDeleteStudent(exists);
-    };
-
-    useClickOutside(elementRef,onClose);
+  useClickOutside(elementRef, onClose);
 
   return (
     <motion.div
@@ -45,14 +45,14 @@ const DeleteStudentModal:React.FC<Props> = ({onClose,onSubmit}) => {
         ref={elementRef}
         className="bg-[var(--color-surface)] p-6 rounded-lg w-[90%] max-w-xl min-h-[40vh] shadow-lg border-2 flex flex-col items-center overflow-y-auto"
       >
-        <h1 className="font-bold text-[var(--color-text)] border-b-2 mb-4 text-xl">Delete Student</h1>
+        <h1 className="font-bold text-[var(--color-text-heading)] border-b-2 mb-4" style={{ fontSize: "var(--font-size-semi-large)" }}>Delete Student</h1>
         <div className="text-base mb-1">
           {!!deleteStudent ? (
             <>
-              <h1 style={{fontSize:"var(--font-size-base)"}}>Delete <span className='text-red-500 scale-110 font-black'>{name}</span> ?</h1>
+              <h1 style={{ fontSize: "var(--font-size-base)" }}>Delete <span className='text-red-500 scale-110 font-black'>{name}</span> ?</h1>
             </>
-          ):"check if student exists"
-        }</div>
+          ) : "check if student exists"
+          }</div>
         <p className="text-base mb-4">Hit confirm to delete</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full items-center">
@@ -95,12 +95,12 @@ const DeleteStudentModal:React.FC<Props> = ({onClose,onSubmit}) => {
                 </button>
               </>
             )}
-            </div>
+          </div>
         </form>
-        
-        </div>
-        </motion.div>
-    )
+
+      </div>
+    </motion.div>
+  )
 };
 
 export default DeleteStudentModal
