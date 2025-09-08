@@ -11,8 +11,8 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
   return (
     <div className="w-full h-full">
       <h2
-        className="bg-[var(--color-surface)] text-[var(--color-text-heading)] p-2 font-bold mb-4 text-center rounded-lg"
-        style={{ fontSize: "var(--font-size-semi-large)" }}
+        className="bg-[var(--color-surface)] text-[var(--color-text-heading)] px-4 py-2 font-semibold mb-4 text-center rounded-lg"
+        style={{ fontSize: "var(--font-size-base)" }}
       >
         {month} Score
       </h2>
@@ -24,14 +24,14 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
           {score.map((item, index) => (
             <li
               key={index}
-              className="flex justify-between items-center p-2 border-2 rounded-lg"
+              className="flex justify-between items-center p-2 border-2 rounded-lg "
               style={{ fontSize: "var(--font-size-small)" }}
             >
               <span>Day {index + 1}</span>
               <span
                 className="ml-4 px-2 p-0.5 rounded-sm"
                 style={{
-                  backgroundColor: item > 0 ? "#78cc0a" : index + 1 >= todayIndex ? "#6E6E6E":"#fc685d",
+                  backgroundColor: item > 0 ? "#78cc0a" : index + 1 >= todayIndex ? "#6E6E6E" : "#fc685d",
                 }}
               >
                 {item}
@@ -41,7 +41,7 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
         </ul>
       </div>
 
-      
+
       <div className="hidden lg:grid grid-cols-7 gap-2 mt-4">
         {score.map((item, index) => (
           <div
@@ -52,9 +52,9 @@ const ScoreDetails: React.FC<Props> = ({ score, divHeight = 300 }) => {
             <span className="font-bold">{index + 1}</span>
             <span
               className="mt-1 px-2 rounded"
-               style={{
-                  backgroundColor: item > 0 ? "#78cc0a" : index + 1 >= todayIndex ? "#6E6E6E":"#fc685d",
-                }}
+              style={{
+                backgroundColor: item > 0 ? "#78cc0a" : index + 1 >= todayIndex ? "#6E6E6E" : "#fc685d",
+              }}
             >
               {item}
             </span>
