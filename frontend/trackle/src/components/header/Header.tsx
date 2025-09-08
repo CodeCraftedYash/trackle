@@ -20,7 +20,7 @@ const Header: React.FC = () => {
     >
       <Logo />
       <div className='hidden lg:block'><Navbar /></div>
-      <div className='lg:hidden relative flex items-center justify-center mr-4 -translate-y-2'>
+      <div className='lg:hidden relative flex items-center justify-center mr-4 -translate-y-2 -translate-x-4'>
         {<AnimatePresence>
           {!open && <motion.div
             key={`${open}`}
