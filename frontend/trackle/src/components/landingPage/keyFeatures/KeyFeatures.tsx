@@ -15,8 +15,8 @@ const KeyFeatures: React.FC = () => {
             <div className='w-full flex  justify-between gap-2 mt-4 flex-col md:mt-10'>
                 {
                     keyFeaturesContent.map((item, index) => (
-                        <div className='flex w-full mb-12 lg:justify-between lg:items-start'>
-                            <div key={index} className='flex flex-col  lg:mt-8 w-full sm:mx-auto'>
+                        <div className='flex w-full mb-12 lg:justify-between lg:items-start' key={index}>
+                            <div className='flex flex-col  lg:mt-8 w-full sm:mx-auto'>
                                 <h1 className='text-[var(--color-text-heading)] bg-[var(--color-surface)] rounded-xl font-thin w-[60%] px-2 py-4 mx-auto text-wrap ' style={{ fontSize: "var(--font-size-semi-large)" }}>{item.title}</h1>
 
                                 <img src={item.imgSrc} alt={item.title} loading="lazy" className='lg:hidden w-[55%] max-w-[56%] sm:w-[43%]  md:w-[25%] mx-auto my-4 lg:my-0' />
