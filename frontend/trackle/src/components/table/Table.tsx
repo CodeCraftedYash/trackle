@@ -9,7 +9,6 @@ const Table: React.FC = () => {
   const today = new Date().getDate() - 1;
   const gettableRowsData = getTableRows();
   const tableRows = gettableRowsData.map((item) => {
-    console.log(item.homework)
     return (<tr key={item._id} className='w-full hover:bg-[var(--color-accent)] transition-all duration-300 ease-in-out'>
       <td className='p-2 border-b-2 text-left  border-[var(--color-surface)]'><img className='w-10 rounded-full aspect-square object-cover object-top ' src={item.picture ? item.picture : "notfound"} alt={item.name} /></td>
       <td className='p-2 border-b-2 text-left  font-bold text-[var(--color-text)] border-[var(--color-surface)]' style={{ fontSize: "var(--font-size-base)" }}>{item.name}</td>
