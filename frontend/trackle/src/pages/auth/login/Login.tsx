@@ -114,18 +114,6 @@ const Login = () => {
               </label>
             </div>
             <div className="flex flex-nowrap items-center justify-between w-full gap-4">
-               <motion.button
-                whileTap="tap"
-                initial="rest"
-                className="w-fit p-2 bg-green-500 rounded-xl mt-8 mb-2  hover:cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out text-[var(--color-text-heading)]"
-                onClick={(e: FormEvent) => {
-                  e.preventDefault();
-                  navigate({ to: "/" });
-                }}
-                variants={tapAnimationVariant}
-              >
-                Submit
-              </motion.button>
               <motion.button
                 whileTap="tap"
                 initial="rest"
@@ -138,6 +126,16 @@ const Login = () => {
               >
                 SignUp ?
               </motion.button>
+               <motion.button
+                whileTap="tap"
+                initial="rest"
+                type='submit'
+                className="w-fit p-2 bg-green-500 rounded-xl mt-8 mb-2  hover:cursor-pointer hover:scale-110 transition-all duration-200 ease-in-out text-[var(--color-text-heading)]"
+                variants={tapAnimationVariant}
+              >
+                Submit
+              </motion.button>
+              
             </div>
 
           </form>
